@@ -1,4 +1,3 @@
-from backend_portfolio.userpart.models import TypeFeedBack
 from .serializers import *
 from rest_framework.generics import *
 from userpart.models import *
@@ -15,4 +14,4 @@ class FeedBackView(ListAPIView):
 
 class TypeFeedBackView(ListCreateAPIView):
     serializer_class = TypeFeedBackSerializer
-    queryset = TypeFeedBackSerializer.objects.all()
+    queryset = TypeFeedBack.objects.all()
