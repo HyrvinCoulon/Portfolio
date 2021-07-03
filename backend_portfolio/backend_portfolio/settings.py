@@ -80,9 +80,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'testfeed',
-        'USER': 'bomyron',
-        'PASSWORD': 'passforward',
-        'HOST': '192.168.1.95',
+        'USER': '********',
+        'PASSWORD': '**************',
+        'HOST': '************',
         'PORT':'3306'
     }
 }
