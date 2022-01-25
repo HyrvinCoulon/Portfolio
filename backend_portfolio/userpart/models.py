@@ -54,9 +54,7 @@ class TitleProject(models.Model):
 
 class TaskProject(models.Model):
     title = models.CharField(max_length=30, default="TaskModel")
-    fordate = models.DateField(default=None)
     done = models.BooleanField(default=False)
-    budget = models.FloatField(default=0)
     spent = models.FloatField(default=0)
     project = models.ForeignKey(TitleProject, on_delete=models.CASCADE)
 
@@ -70,9 +68,27 @@ class TaskProject(models.Model):
         return self.title
 
 
+class SubTaskProject(models.Model):
+    title = models.CharField(max_length=30, default="SubTaskModel")
+    fordate = models.DateField(default=None, blank=True, null=True)
+    done = models.BooleanField(default=False)
+    budget = models.FloatField(default=0)
+    spent = models.FloatField(default=0)
+    project = models.ForeignKey(TaskProject, on_delete=models.CASCADE)
+
+    def set_spent(self, cpt):
+        self.spent += cpt
+
+    def get_spent(self):
+        return self.spent
+
+    def __str__(self):
+        return self.title
+
+
 class Assignement(models.Model):
     done = models.BooleanField(default=False)
-    project = models.ForeignKey(TaskProject, on_delete=models.CASCADE)
+    project = models.ForeignKey(SubTaskProject, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
