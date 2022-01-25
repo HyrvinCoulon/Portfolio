@@ -1,4 +1,3 @@
-from django.db.models import fields
 from userpart import models
 from rest_framework import serializers
 
@@ -34,6 +33,13 @@ class TaskProjectSerializer(serializers.ModelSerializer):
     class Meta:
         fields = '__all__'
         model = models.TaskProject
+
+
+class SubTaskProjectSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        fields = '__all__'
+        model = models.SubTaskProject
 
 
 class AssignementSerializer(serializers.ModelSerializer):
